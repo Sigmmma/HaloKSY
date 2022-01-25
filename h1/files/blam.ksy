@@ -1,10 +1,13 @@
 # Using u1 for booleans. These instances have been marked with comments.
 meta:
   id: blam
-  application: Halo CE
+  application: Halo Custom Edition
   file-extension: sav
+  xref:
+    filename: blam.sav
+  license: GPL-3.0-only
   endian: le
-doc: Gearbox Halo CE blam.sav
+doc: Gearbox Halo CE blam.sav file
 doc-ref: https://c20.reclaimers.net/h1/engine/files/#blam-sav
 seq:
   - id: padding1

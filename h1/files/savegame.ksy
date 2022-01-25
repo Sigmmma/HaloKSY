@@ -1,9 +1,12 @@
 meta:
   id: savegame
-  application: Halo CE
+  application: Halo Custom Edition
   file-extension: bin
+  xref:
+    filename: savegame.bin
+  license: GPL-3.0-only
   endian: be
-doc: Gearbox Halo CE savegame.bin
+doc: Gearbox Halo CE savegame.bin file
 doc-ref: https://c20.reclaimers.net/h1/engine/files/#savegame-bin
 seq:
   - id: unknown1
