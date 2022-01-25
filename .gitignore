@@ -1,2 +1,6 @@
 scripts/
-out/
+test/resources
+test/structs
+__pycache__
+workspace.code-workspace
+todo.txt
