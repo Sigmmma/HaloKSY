@@ -1,6 +1,12 @@
-scripts/
+# Ignore python files, except test code
+*.py
+!test/*.py
 test/resources
 test/structs
+
+# Assorted dev stuff
+example/
+scripts/
 __pycache__
 workspace.code-workspace
 todo.txt

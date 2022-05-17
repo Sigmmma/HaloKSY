@@ -65,10 +65,10 @@ types:
       - id: volume_music
         type: u1
       - id: enable_eax
-        type: u1 #b1
+        type: u1 #bool
         doc: EAX is Environmental Audio Extensions
       - id: hardware_accel
-        type: u1 # b1
+        type: u1 # bool
       - id: sound_quality
         type: u1
         enum: quality_options
@@ -80,7 +80,7 @@ types:
   control_settings:
     seq:
       - id: invert_v_axis
-        type: u1 # b1
+        type: u1 # bool
         doc: |
           Controls if the player's vertical aiming axis controls are inverted,
           e.g. pulling the mouse down aims up.
@@ -879,11 +879,11 @@ types:
         type: u1
         enum: frame_rate_options
       - id: specular
-        type: u1 # b1
+        type: u1 # bool
       - id: shadows
-        type: u1 # b1
+        type: u1 # bool
       - id: decals
-        type: u1 # b1
+        type: u1 # bool
       - id: particles
         type: u1
         enum: particle_settings
