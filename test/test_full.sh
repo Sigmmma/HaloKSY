@@ -12,4 +12,4 @@ if ! hash pytest; then
 fi
 
 echo "Compiling structs and running tests..."
-ksc --target construct --outdir structs/ ../h1/*/* && pytest
+ksc --target construct --python-package structs --outdir structs/ ../h1/*/*.ksy && pytest

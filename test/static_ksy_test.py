@@ -37,12 +37,12 @@ def test_static_ksy(filename):
 
 		if is_file(filename):
 			assert xref.get('filename')
-			assert xref.get('tag_id') is None
+			assert xref.get('tag_group') is None
 
 		if is_tag(filename):
 			assert meta.get('file-extension') == filename
 			assert xref.get('filename') is None
-			assert xref.get('tag_id') and len(xref.get('tag_id')) == 4
+			assert xref.get('tag_group') and len(xref.get('tag_group')) == 4
 
 def is_top_level(filename):
 	return 'common' not in str(ksy_files[filename]['path'])
