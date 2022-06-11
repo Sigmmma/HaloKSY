@@ -25,12 +25,12 @@ seq:
     type: u4
   - id: more_flags # TODO bitfield ActorMoreFlags
     type: u4
-  - id: padding1
+  - id: padding01
     size: 12
   - id: type
     type: u2
     enum: actor_type
-  - id: padding2
+  - id: padding02
     size: 2
   - id: max_vision_distance
     type: f4
@@ -39,14 +39,14 @@ seq:
     type: f4
   - id: max_vision_angle
     type: f4
-  - id: padding3
+  - id: padding03
     size: 4
   - id: peripheral_vision_angle
     type: f4
   - id: peripheral_distance
     type: f4
     doc: World Units
-  - id: padding4
+  - id: padding04
     size: 4
   - id: standing_gun_offset
     type: vector3d
@@ -61,7 +61,7 @@ seq:
   - id: notice_vehicle_chance
     type: f4
     doc: Range[0, 1]
-  - id: padding5
+  - id: padding05
     size: 8
   - id: combat_perception_time
     type: f4
@@ -81,7 +81,7 @@ seq:
   - id: inverse_non_combat_perception_time
     type: f4le
     doc: cache_only # TODO signal this in name somehow?
-  - id: padding6
+  - id: padding06
     size: 8
   - id: dive_into_cover_chance
     type: f4
@@ -164,7 +164,7 @@ seq:
     #type: bounds("f4")
     type: bounds
     doc: Seconds
-  - id: padding7
+  - id: padding07
     size: 8
   - id: cosine_maximum_aiming_deviation
     type: vector2dle
@@ -175,7 +175,7 @@ seq:
   - id: do_not_use_1
     type: tag_dependency
     doc: weapon, unused
-  - id: padding8
+  - id: padding08
     size: 268
   - id: do_not_use_2
     type: tag_dependency
@@ -189,7 +189,7 @@ seq:
   - id: player_danger_trigger
     type: u2
     enum: actor_unreachable_danger_trigger
-  - id: padding9
+  - id: padding09
     size: 2
   - id: danger_trigger_time
     #type: bounds("f4")
@@ -390,6 +390,18 @@ seq:
     doc: actor, unused
   - id: padding22
     size: 48
+  - id: do_not_use_1_path
+    type: str
+    size: 'do_not_use_1.path_length > 0 ? do_not_use_1.path_length + 1 : 0'
+    encoding: ASCII
+  - id: do_not_use_2_path
+    type: str
+    size: 'do_not_use_2.path_length > 0 ? do_not_use_2.path_length + 1 : 0'
+    encoding: ASCII
+  - id: do_not_use_3_path
+    type: str
+    size: 'do_not_use_3.path_length > 0 ? do_not_use_3.path_length + 1 : 0'
+    encoding: ASCII
 enums:
   actor_defensive_crouch_type: # size always 2
     0: never
