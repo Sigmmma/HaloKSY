@@ -4,8 +4,6 @@ from typing import Callable
 import pytest
 import yaml
 
-BLOCK_TYPES = ['block', 'tag_dependency']
-
 ksy_files: 'dict[str,dict]' = dict()
 for path in Path('../h1').rglob('*.ksy'):
 	with open(path) as yaml_file:
@@ -65,15 +63,45 @@ def test_static_meta(filename: str):
 		assert meta.get('endian') == 'be'
 
 @pytest.mark.parametrize('filename', ksy_filter(is_common))
-def test_common_block_fields(filename: str):
+def test_block_fields_common(filename: str):
 	'''Ensures blocks are not used in common types.
 
 	Since block data appears at the end of tag data, block fields should not
 	be used in common files (which are used as parts of the whole tag).
 	'''
 
-	seq: list[dict] = ksy_files[filename]['ksy']['seq']
-	block_fields = [s for s in seq if s.get('type') in BLOCK_TYPES]
-
+	block_fields = get_block_fields(ksy_files[filename]['ksy']['seq'])
 	assert block_fields == []
 
+@pytest.mark.parametrize('filename', ksy_filter(is_tag))
+def test_block_fields_tag(filename: str):
+	'''
+	Ensures every block has a paired data field at the end of the file,
+	in the proper order.
+	'''
+	# TODO this test assumes blocks will only ever be used in top-level types.
+	# It's possible we'll eventually run into blocks within blocks, at which
+	# point this test will need to be re-thought.
+
+	seq: list[dict] = ksy_files[filename]['ksy']['seq']
+	block_fields = get_block_fields(seq)
+	maybe_data_fields = seq[-len(block_fields):]
+
+	for block, data in zip(block_fields, maybe_data_fields):
+		block_id = block.get('id')
+
+		if block.get('type') == 'block':
+			assert data.get('id') == f"{block_id}_block"
+			assert data.get('repeat') == 'expr'
+			assert data.get('repeat-expr') == f"{block_id}.item_count"
+
+		if block.get('type') == 'tag_dependency':
+			assert data.get('id') == f"{block_id}_path"
+			assert data.get('type') == 'str'
+			assert data.get('encoding') == 'ASCII'
+			assert data.get('size') == \
+				f"{block_id}.path_length > 0 ? {block_id}.path_length + 1 : 0"
+
+def get_block_fields(seq: 'list[dict]'):
+	BLOCK_TYPES = ['block', 'tag_dependency']
+	return [s for s in seq if s.get('type') in BLOCK_TYPES]
