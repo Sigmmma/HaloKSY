@@ -10,6 +10,10 @@ different languages using [Kaitai Struct](https://kaitai.io/). This repo is
 intended to be a minimal source of truth other projects can include and build
 off of (e.g. as a submodule).
 
+## Contributing
+We welcome contributors! Please see the [developer docs](DEV-README.md) for
+more info.
+
 # License
 This code is licensed under the
 [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0-standalone.html) license.

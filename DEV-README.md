@@ -21,6 +21,7 @@ For fun, here's a list of our contributions to Kaitai:
 - https://github.com/kaitai-io/kaitai_struct_compiler/pull/241
 - https://github.com/kaitai-io/kaitai_struct_compiler/pull/242
 - https://github.com/kaitai-io/kaitai_struct_compiler/pull/243
+- https://github.com/kaitai-io/kaitai_struct_compiler/pull/246
 
 # Testing
 We have a basic test suite to check for common KSY issues.
@@ -56,10 +57,15 @@ doc-ref: https://c20.reclaimers.net/h1/engine/files/#savegame-bin
 Consider Halo stuff to have big endian by default. Set this in `meta`.
 If individual fields use little endian, set that for the individual field.
 The exception is files like `blam.ksy`, where the whole file is little endian.
+```yaml
+meta:
+  endian: be
+```
 
 ## Padding
 Pad fields do not have a type, but must have a unique ID. Use the name
 `padding`, appending a number if there is more than one (e.g. `padding3`).
+Also see [Numbering](#Numbering).
 ```yaml
 - id: padding
   size: 12
@@ -100,3 +106,17 @@ now.
   type: u2 # bitfield SomeNamedBitfield
 ```
 
+## Numbering
+Many applications sort fields alpha-numerically, so numbered fields (e.g.
+`padding123`) should have leading zeros when appropriate.
+For example, if there are 15 padding fields, they should be named `padding01`,
+`padding02`, ..., `padding15`.
+
+## Blocks
+Halo tags handle variable-length block data with a constant-size, inline field
+that describes the block (length, type, etc...). They then append the actual
+block data at the end of the tag, in the order the description fields appear.
+
+We expect a sister field at the end of the tag for the following types:
+- `block`
+- `tag_dependency`
