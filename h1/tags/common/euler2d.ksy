@@ -2,7 +2,7 @@ meta:
   id: euler2d
   application: Halo Custom Edition
   license: GPL-3.0-only
-  endian: le
+  endian: be
 doc: Gearbox Halo CE common euler 2D
 seq:
   - id: yaw

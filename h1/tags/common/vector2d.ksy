@@ -2,7 +2,7 @@ meta:
   id: vector2d
   application: Halo Custom Edition
   license: GPL-3.0-only
-  endian: le
+  endian: be
 doc: Gearbox Halo CE common vector 2D
 seq:
   - id: i

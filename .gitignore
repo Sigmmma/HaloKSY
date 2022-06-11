@@ -10,3 +10,4 @@ scripts/
 __pycache__
 workspace.code-workspace
 todo.txt
+*.todo
