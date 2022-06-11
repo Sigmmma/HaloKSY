@@ -3,7 +3,7 @@ This is a bootleg progress tracker for KSY for Halo CE tags. If people start usi
 Statuses:
 - **Done**: Good with no outstanding TODOs.
 - **Good**: Loads with all fields properly represented. Some outstanding non-functional TODOs.
-- **Loads**: KSY produces a functional reader, but some fields are not properly represented (e.g. `u8` instead of named bitfield.
+- **Loads**: KSY produces a functional reader, but some fields are not properly represented (e.g. `u8` instead of named bitfield).
 - **Blocked**: Kaitai Struct Compiler needs a feature added to support something.
 - *Blank*: Not started yet.
 
@@ -11,7 +11,7 @@ Statuses:
 |-----------|--------|-------|
 | HEADER | Loads | `flags` uses `u8` instead of bitfield |
 | actor | Loads | `flags` uses `u4` instead of bitfield. Duplicates `bounds("f4")`, `vector2d("f4le")` |
-| actor_variant |||
+| actor_variant | Loads | `flags` uses `u4` instead of bitfield |
 | antenna |||
 | biped ||
 | bitmap |||
