@@ -545,25 +545,30 @@ seq:
 
       Overrides biped's color change permutations.
   - id: actor_definition_path
-    type: str
-    size: 'actor_definition.path_length > 0 ? actor_definition.path_length + 1 : 0'
+    type: strz
+    size: actor_definition.path_length + 1
     encoding: ASCII
+    if: actor_definition.path_length > 0
   - id: unit_path
-    type: str
-    size: 'unit.path_length > 0 ? unit.path_length + 1 : 0'
+    type: strz
+    size: unit.path_length + 1
     encoding: ASCII
+    if: unit.path_length > 0
   - id: major_variant_path
-    type: str
-    size: 'major_variant.path_length > 0 ? major_variant.path_length + 1 : 0'
+    type: strz
+    size: major_variant.path_length + 1
     encoding: ASCII
+    if: major_variant.path_length > 0
   - id: weapon_path
-    type: str
-    size: 'weapon.path_length > 0 ? weapon.path_length + 1 : 0'
+    type: strz
+    size: weapon.path_length + 1
     encoding: ASCII
+    if: weapon.path_length > 0
   - id: equipment_path
-    type: str
-    size: 'equipment.path_length > 0 ? equipment.path_length + 1 : 0'
+    type: strz
+    size: equipment.path_length + 1
     encoding: ASCII
+    if: equipment.path_length > 0
   - id: change_colors_block
     type: change_colors
     repeat: expr

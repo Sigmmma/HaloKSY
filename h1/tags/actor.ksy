@@ -391,17 +391,20 @@ seq:
   - id: padding22
     size: 48
   - id: do_not_use_1_path
-    type: str
-    size: 'do_not_use_1.path_length > 0 ? do_not_use_1.path_length + 1 : 0'
+    type: strz
+    size: do_not_use_1.path_length + 1
     encoding: ASCII
+    if: do_not_use_1.path_length > 0
   - id: do_not_use_2_path
-    type: str
-    size: 'do_not_use_2.path_length > 0 ? do_not_use_2.path_length + 1 : 0'
+    type: strz
+    size: do_not_use_2.path_length + 1
     encoding: ASCII
+    if: do_not_use_2.path_length > 0
   - id: do_not_use_3_path
-    type: str
-    size: 'do_not_use_3.path_length > 0 ? do_not_use_3.path_length + 1 : 0'
+    type: strz
+    size: do_not_use_3.path_length + 1
     encoding: ASCII
+    if: do_not_use_3.path_length > 0
 enums:
   actor_defensive_crouch_type: # size always 2
     0: never

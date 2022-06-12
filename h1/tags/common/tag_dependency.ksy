@@ -12,12 +12,13 @@ doc: |
   needs a corresponding null-terminated ASCII string entry at the end too.
 
   HOWEVER, if `path_length` is 0, that path string is not included at the end of
-  the data. Not even the null-terminator. Because of this, its `size` should be
-  defined like this:
+  the data. Not even the null-terminator. Because of this, we need to use
+  a conditional for this field inclusion, like this:
   ```
-  type: str
-  size: 'field.path_length > 0 ? field.path_length + 1 : 0'
+  type: strz
+  size: field.path_length + 1
   encoding: ASCII
+  if: field.path_length > 0
   ```
 seq:
   - id: tag_class

@@ -97,10 +97,10 @@ def test_block_fields_tag(filename: str):
 
 		if block.get('type') == 'tag_dependency':
 			assert data.get('id') == f"{block_id}_path"
-			assert data.get('type') == 'str'
+			assert data.get('type') == 'strz'
 			assert data.get('encoding') == 'ASCII'
-			assert data.get('size') == \
-				f"{block_id}.path_length > 0 ? {block_id}.path_length + 1 : 0"
+			assert data.get('size') == f"{block_id}.path_length + 1"
+			assert data.get('if') == f"{block_id}.path_length > 0"
 
 def get_block_fields(seq: 'list[dict]'):
 	BLOCK_TYPES = ['block', 'tag_dependency']
