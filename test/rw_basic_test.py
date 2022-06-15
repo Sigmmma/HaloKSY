@@ -30,6 +30,12 @@ STRUCT_RESOURCES: 'tuple[str,str,dict[str,Any]]' = (
 		'berserk_melee_range': 16,
 		'change_colors_block.0.upper_bound.green': 0.239216,
 	}),
+	('antenna', 'warthog antenna.antenna', {
+		'attachment_marker_name': 'antenna',
+		'physics_path': 'vehicles\\warthog\\warthog antenna steel',
+		'spring_strength_coefficient': 0.8666,
+		'vertices_block.3.color.green': 1,
+	}),
 	('wind', 'multiplayer.wind', {
 		'damping': 0.7,
 		'variation_area.yaw': radians(50),

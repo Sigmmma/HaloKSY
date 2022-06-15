@@ -12,7 +12,7 @@ Statuses:
 | HEADER | Loads | `flags` uses `u8` instead of bitfield |
 | actor | Loads | `flags` uses `u4` instead of bitfield. Duplicates `bounds("f4")`, `vector2d("f4le")` |
 | actor_variant | Loads | `flags` uses `u4` instead of bitfield |
-| antenna |||
+| antenna | Good | Needs parametrized `point3d("f4le")` |
 | biped ||
 | bitmap |||
 | camera_track |||
